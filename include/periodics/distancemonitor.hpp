@@ -33,8 +33,8 @@ namespace periodics
             /* Run method */
             virtual void        _run();
             UnbufferedSerial&   m_serial;
-            mbed::AnalogIn      m_pinTrg;
-            mbed::AnalogOut     m_pinEcho;
+            mbed::DigitalOut    m_pinTrg;
+            mbed::DigitalIn     m_pinEcho;
 
             /** @brief Active flag  */
             bool m_isActive;

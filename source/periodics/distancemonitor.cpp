@@ -12,8 +12,8 @@ namespace periodics
     CDistancemonitor::CDistancemonitor(
         std::chrono::milliseconds f_period,
         UnbufferedSerial& f_serial,
-        mbed::AnalogIn f_pinTrg;
-        mbed::AnalogOut f_pinEcho;
+        mbed::DigitalOut f_pinTrg;
+        mbed::DigitalIn  f_pinEcho;
     )
     : utils::CTask(f_period)
     , m_serial(f_serial) 

@@ -71,6 +71,8 @@ periodics::CPowermanager g_powermanager(g_baseTick * 100, g_klmanager, g_rpi, g_
 brain::CBatterymanager g_batteryManager(dummy_value);
 
 /* USER NEW COMPONENT BEGIN */
+drivers::CUltrasonicsensor g_ultrasonicsensor();///////////COMPLETAR
+periodics::CDistancemonitor g_distancemonitor(g_baseTick * 3000, g_rpi,X0,X1);
 
 /* USER NEW COMPONENT END */
 
@@ -85,7 +87,8 @@ drivers::CSerialMonitor::CSerialSubscriberMap g_serialMonitorSubscribers = {
     {"imu",            mbed::callback(&g_imu,               &periodics::CImu::serialCallbackIMUcommand)},
     {"kl",             mbed::callback(&g_klmanager,         &brain::CKlmanager::serialCallbackKLCommand)},
     {"batteryCapacity",mbed::callback(&g_batteryManager,    &brain::CBatterymanager::serialCallbackBATTERYCommand)},
-    {"resourceMonitor",mbed::callback(&g_resourceMonitor,   &periodics::CResourcemonitor::serialCallbackRESMONCommand),}
+    {"resourceMonitor",mbed::callback(&g_resourceMonitor,   &periodics::CResourcemonitor::serialCallbackRESMONCommand),},
+    {"distanceMonitor",mbed::callback(&g_distancemonitor,   &periodics::CDistancemonitor::serialCallbackDISTANCEMcommand),}
 };
 
 // Create the serial monitor object, which decodes, redirects the messages and transmits the responses.
@@ -103,6 +106,7 @@ utils::CTask* g_taskList[] = {
     &g_resourceMonitor,
     &g_alerts,
     // USER NEW PERIODICS BEGIN -
+    &g_distancemonitor,
     
     // USER NEW PERIODICS END
 }; 

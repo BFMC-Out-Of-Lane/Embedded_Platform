@@ -60,3 +60,7 @@
 #include <utils/taskmanager.hpp>
 /* Header file for the task manager library, which  applies periodically the fun function of it's children*/
 #include <utils/task.hpp>
+/* Header file for the Distancemonitor functionality */
+#include <periodics/distancemonitor.hpp>
+/* Header file for the Ultrasonicsensor functionality */
+#include <drivers/ultrasonicsensor.hpp>

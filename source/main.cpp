@@ -71,8 +71,7 @@ periodics::CPowermanager g_powermanager(g_baseTick * 100, g_klmanager, g_rpi, g_
 brain::CBatterymanager g_batteryManager(dummy_value);
 
 /* USER NEW COMPONENT BEGIN */
-drivers::CUltrasonicsensor g_ultrasonicsensor();///////////COMPLETAR
-periodics::CDistancemonitor g_distancemonitor(g_baseTick * 3000, g_rpi,X0,X1);
+periodics::CUltrasonicsensor g_ultrasonicsensor(g_baseTick * 500, D5, D6, g_rpi);
 
 /* USER NEW COMPONENT END */
 
@@ -87,8 +86,8 @@ drivers::CSerialMonitor::CSerialSubscriberMap g_serialMonitorSubscribers = {
     {"imu",            mbed::callback(&g_imu,               &periodics::CImu::serialCallbackIMUcommand)},
     {"kl",             mbed::callback(&g_klmanager,         &brain::CKlmanager::serialCallbackKLCommand)},
     {"batteryCapacity",mbed::callback(&g_batteryManager,    &brain::CBatterymanager::serialCallbackBATTERYCommand)},
-    {"resourceMonitor",mbed::callback(&g_resourceMonitor,   &periodics::CResourcemonitor::serialCallbackRESMONCommand),},
-    {"distanceMonitor",mbed::callback(&g_distancemonitor,   &periodics::CDistancemonitor::serialCallbackDISTANCEMcommand),}
+    {"resourceMonitor",mbed::callback(&g_resourceMonitor,   &periodics::CResourcemonitor::serialCallbackRESMONCommand)},
+    {"ultrasonicSensor",mbed::callback(&g_ultrasonicsensor,   &periodics::CUltrasonicsensor::serialCallbackULTRASONICcommand),}
 };
 
 // Create the serial monitor object, which decodes, redirects the messages and transmits the responses.
@@ -106,7 +105,7 @@ utils::CTask* g_taskList[] = {
     &g_resourceMonitor,
     &g_alerts,
     // USER NEW PERIODICS BEGIN -
-    &g_distancemonitor,
+    &g_ultrasonicsensor,
     
     // USER NEW PERIODICS END
 }; 
@@ -129,7 +128,7 @@ uint8_t setup()
     g_rpi.write("\r\n\r\n", 4);
     g_rpi.write("#################\r\n", 19);
     g_rpi.write("#               #\r\n", 19);
-    g_rpi.write("#   I'm alive   #\r\n", 19);
+    g_rpi.write("#   I'm GROOT   #\r\n", 19);
     g_rpi.write("#               #\r\n", 19);
     g_rpi.write("#################\r\n", 19);
     g_rpi.write("\r\n", 2);

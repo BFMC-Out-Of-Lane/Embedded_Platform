@@ -59,6 +59,7 @@ extern bool bool_globalsV_imu_isActive;
 extern bool bool_globalsV_instant_isActive;
 extern bool bool_globalsV_battery_isActive;
 extern bool bool_globalsV_resource_isActive;
+extern bool bool_globalsV_ultrasonicSensor_isActive;
 extern bool bool_globalsV_ShuttedDown;
 extern bool bool_globalsV_warningFlag;
 

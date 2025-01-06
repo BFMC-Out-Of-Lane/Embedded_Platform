@@ -1,10 +1,10 @@
 #ifndef DISTANCEMONITOR_HPP
 #define DISTANCEMONITOR_HPP
 
-// TODO: Add your code here
-
 #include <chrono>
 #include <utils/task.hpp>
+#include <drivers/hcsr04.hpp>
+#include <drivers/speedingmotor.hpp>
 
 namespace periodics
 {
@@ -18,23 +18,39 @@ namespace periodics
             /* Constructor */
             CDistancemonitor(
                 std::chrono::milliseconds f_period,
-                UnbufferedSerial& f_serial,
-                mbed::DigitalOut f_pinTrg, 
-                mbed::DigitalIn f_pinEcho, 
+                PinName f_pinTrg1,
+                PinName f_pinEcho1,
+                PinName f_pinTrg2,
+                PinName f_pinEcho2,
+                PinName f_pinTrg3,
+                PinName f_pinEcho3,
+                drivers::ISpeedingCommand&    f_speedingControl,
+                UnbufferedSerial& f_serial
             );
             /* Destructor */
             ~CDistancemonitor();
-            void serialCallbackDISTANCEMcommand(char const * a, char * b);
+
+            void serialCallbackDISTANCEMONcommand(char const * a, char * b);
+
+            /* Serial callback method for Speed */ 
+            void serialCallbackSPEEDcommand(char const * a, char * b);
+            void serialCallbackBRAKEcommand(char const * a, char * b);
 
         private:
             /* private variables & method member */
 
-
             /* Run method */
             virtual void        _run();
-            UnbufferedSerial&   m_serial;
-            mbed::DigitalOut    m_pinTrg;
-            mbed::DigitalIn     m_pinEcho;
+
+            /* @brief Pin trigger and echo */
+            drivers::CHcsr04 m_ultrasonicSensor1;
+            drivers::CHcsr04 m_ultrasonicSensor2;
+            drivers::CHcsr04 m_ultrasonicSensor3;
+
+            /* @brief Serial communication obj.  */
+            UnbufferedSerial&          m_serial;
+
+            drivers::ISpeedingCommand&    m_speedingControl;
 
             /** @brief Active flag  */
             bool m_isActive;

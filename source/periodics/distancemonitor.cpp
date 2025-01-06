@@ -1,8 +1,7 @@
 #include "periodics/distancemonitor.hpp"
 
-#define buffer_256 256
+#define _18_chars 256
 
-// TODO: Add your code here
 namespace periodics
 {
    /**
@@ -11,15 +10,24 @@ namespace periodics
     */
     CDistancemonitor::CDistancemonitor(
         std::chrono::milliseconds f_period,
-        UnbufferedSerial& f_serial,
-        mbed::DigitalOut f_pinTrg,
-        mbed::DigitalIn  f_pinEcho,
+        PinName f_pinTrg1,
+        PinName f_pinEcho1,
+        PinName f_pinTrg2,
+        PinName f_pinEcho2,
+        PinName f_pinTrg3,
+        PinName f_pinEcho3,
+        drivers::ISpeedingCommand&    f_speedingControl,
+        UnbufferedSerial& f_serial
     )
     : utils::CTask(f_period)
-    , m_serial(f_serial) 
-    , m_pinTrg(f_pinTrg)
-    , m_pinEcho(f_pinTrg)
+    , m_ultrasonicSensor1(f_pinTrg1, f_pinEcho1)
+    , m_ultrasonicSensor2(f_pinTrg2, f_pinEcho2)
+    , m_ultrasonicSensor3(f_pinTrg3, f_pinEcho3)
+    , m_speedingControl(f_speedingControl)
+    , m_serial(f_serial)
+    , m_isActive(false)
     {
+        /* constructor behaviour */
     }
 
     /** @brief  CDistancemonitor class destructor
@@ -28,12 +36,14 @@ namespace periodics
     {
     }
 
-    void CDistancemonitor::serialCallbackDISTANCEMcommand(char const * a, char const * b){
-        uint8_t l_isActivate;
+    void CDistancemonitor::serialCallbackDISTANCEMONcommand(char const * a, char * b) {
+        uint8_t l_isActivate=0;
         uint8_t l_res = sscanf(a,"%hhu",&l_isActivate);
+
         if(1 == l_res){
-            m_isActive=(l_isActivate>=1);
-            sprintf(b,"1");
+                m_isActive=(l_isActivate>=1);
+                //bool_globalsV_x_isActive = (l_isActivate>=1);
+                sprintf(b,"1");
         }else{
             sprintf(b,"syntax error");
         }
@@ -43,12 +53,22 @@ namespace periodics
     void CDistancemonitor::_run()
     {
         /* Run method behaviour */
-        if(!m_isActive) return;
+        //if(!m_isActive) return;
 
-        char buffer[buffer_256];
-        snprintf(buffer, sizeof(buffer), "@ultrasonic:%d:%d;;\r\n", 123,123);
-        m_serial.write(buffer, strlen(buffer));
+        uint16_t distance_mm1 = m_ultrasonicSensor1.averageDistance() * 10;
+        uint16_t distance_mm2 = m_ultrasonicSensor2.averageDistance() * 10;
+        //uint16_t distance3 = m_ultrasonicSensor3.averageDistance();
 
+        char buffer[_18_chars];
+
+        snprintf(buffer, sizeof(buffer), "@ultrasonic:%d;%d;;\r\n", distance_mm1, distance_mm2);
+        m_serial.write(buffer,strlen(buffer));
+
+        /*
+        if (distance1 < 5) {
+            m_speedingControl.setBrake();
+        }
+        */
+        
     }
-
 }; // namespace periodics

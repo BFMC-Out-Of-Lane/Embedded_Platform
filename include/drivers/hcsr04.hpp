@@ -3,6 +3,7 @@
 
 /* The mbed library */
 #include <mbed.h>
+#include <chrono>
 
 namespace drivers
 {
@@ -21,17 +22,31 @@ namespace drivers
             /* Destructor */
             ~CHcsr04();
 
-            /* @brief Measure distance */
-            uint16_t measureDistance();
+            void sendTriggerPulse();
 
-            uint16_t averageDistance();
+            /* Método público para obtener la distancia */
+            uint16_t getDistance();
+
+
+            void CHcsr04::setEchoRiseCallbacks(Callback<void()> riseCallback);
+            void CHcsr04::setEchoFallCallbacks(Callback<void()> fallCallback);
+
+            /* Callbacks for echo pin */
+            void onEchoRise();
+            void onEchoFall();
+
 
         private:
             /* private variables & method member */
 
             /* @brief Pin trigger and echo */
             mbed::DigitalOut m_pinTrg;
-            mbed::DigitalIn m_pinEcho;
+            mbed::InterruptIn m_pinEcho;
+
+            mbed::Timer m_timerEcho;/* Timer to measure echo pulse duration */
+
+            volatile uint16_t m_distance;/* Last measured distance */
+
 
 
     }; // class CHcsr04

@@ -18,12 +18,9 @@ namespace periodics
             /* Constructor */
             CDistancemonitor(
                 std::chrono::milliseconds f_period,
-                PinName f_pinTrg1,
-                PinName f_pinEcho1,
-                PinName f_pinTrg2,
-                PinName f_pinEcho2,
-                PinName f_pinTrg3,
-                PinName f_pinEcho3,
+                drivers::CHcsr04& f_ultrasonicSensor1,
+                drivers::CHcsr04& f_ultrasonicSensor2,
+                drivers::CHcsr04& f_ultrasonicSensor3,
                 drivers::ISpeedingCommand&    f_speedingControl,
                 UnbufferedSerial& f_serial
             );
@@ -31,10 +28,6 @@ namespace periodics
             ~CDistancemonitor();
 
             void serialCallbackDISTANCEMONcommand(char const * a, char * b);
-
-            /* Serial callback method for Speed */ 
-            void serialCallbackSPEEDcommand(char const * a, char * b);
-            void serialCallbackBRAKEcommand(char const * a, char * b);
 
         private:
             /* private variables & method member */
@@ -46,6 +39,11 @@ namespace periodics
             drivers::CHcsr04 m_ultrasonicSensor1;
             drivers::CHcsr04 m_ultrasonicSensor2;
             drivers::CHcsr04 m_ultrasonicSensor3;
+
+            uint16_t distance_mm1;
+            uint16_t distance_mm2;
+            uint16_t distance_mm3;
+            uint16_t m_samples;
 
             /* @brief Serial communication obj.  */
             UnbufferedSerial&          m_serial;

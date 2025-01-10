@@ -71,7 +71,10 @@ periodics::CPowermanager g_powermanager(g_baseTick * 100, g_klmanager, g_rpi, g_
 brain::CBatterymanager g_batteryManager(dummy_value);
 
 /* USER NEW COMPONENT BEGIN */
-periodics::CDistancemonitor g_distancemonitor(g_baseTick * 1000, D5, D6, D7, D8, D9, D10, g_speedingDriver, g_rpi);
+drivers::CHcsr04 g_hcsr04_1(D5, D6);
+drivers::CHcsr04 g_hcsr04_2(D5, D8);
+drivers::CHcsr04 g_hcsr04_3(D5, D10);
+periodics::CDistancemonitor g_distancemonitor(g_baseTick * 1000, g_hcsr04_1, g_hcsr04_2, g_hcsr04_3, g_speedingDriver, g_rpi);
 
 /* USER NEW COMPONENT END */
 

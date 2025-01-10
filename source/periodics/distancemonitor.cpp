@@ -1,6 +1,7 @@
 #include "periodics/distancemonitor.hpp"
 
 #define _18_chars 256
+#define DISTANCE_SAMPLES 10
 
 namespace periodics
 {
@@ -10,19 +11,20 @@ namespace periodics
     */
     CDistancemonitor::CDistancemonitor(
         std::chrono::milliseconds f_period,
-        PinName f_pinTrg1,
-        PinName f_pinEcho1,
-        PinName f_pinTrg2,
-        PinName f_pinEcho2,
-        PinName f_pinTrg3,
-        PinName f_pinEcho3,
+        drivers::CHcsr04& f_ultrasonicSensor1,
+        drivers::CHcsr04& f_ultrasonicSensor2,
+        drivers::CHcsr04& f_ultrasonicSensor3,
         drivers::ISpeedingCommand&    f_speedingControl,
         UnbufferedSerial& f_serial
     )
     : utils::CTask(f_period)
-    , m_ultrasonicSensor1(f_pinTrg1, f_pinEcho1)
-    , m_ultrasonicSensor2(f_pinTrg2, f_pinEcho2)
-    , m_ultrasonicSensor3(f_pinTrg3, f_pinEcho3)
+    , m_ultrasonicSensor1(f_ultrasonicSensor1)
+    , m_ultrasonicSensor2(f_ultrasonicSensor2)
+    , m_ultrasonicSensor3(f_ultrasonicSensor3)
+    , distance_mm1(0)
+    , distance_mm2(0)
+    , distance_mm3(0)
+    , m_samples(0)
     , m_speedingControl(f_speedingControl)
     , m_serial(f_serial)
     , m_isActive(false)
@@ -55,14 +57,30 @@ namespace periodics
         /* Run method behaviour */
         //if(!m_isActive) return;
 
-        uint16_t distance_mm1 = m_ultrasonicSensor1.averageDistance() * 10;
-        uint16_t distance_mm2 = m_ultrasonicSensor2.averageDistance() * 10;
-        //uint16_t distance3 = m_ultrasonicSensor3.averageDistance();
+        m_ultrasonicSensor1.sendTriggerPulse();
+        //m_ultrasonicSensor2.sendTriggerPulse();
+        //m_ultrasonicSensor3.sendTriggerPulse();
 
-        char buffer[_18_chars];
+        m_ultrasonicSensor1.setEchoRiseCallbacks(mbed::callback(this, &drivers::CHcsr04::onEchoRise);
+        m_ultrasonicSensor1.setEchoFallCallbacks(mbed::callback(this, &drivers::CHcsr04::onEchoFall);
 
-        snprintf(buffer, sizeof(buffer), "@ultrasonic:%d;%d;;\r\n", distance_mm1, distance_mm2);
-        m_serial.write(buffer,strlen(buffer));
+        if (m_samples < DISTANCE_SAMPLES){
+            distance_mm1 += m_ultrasonicSensor1.getDistance();
+            distance_mm2 += m_ultrasonicSensor2.getDistance();
+            //distance_mm3 += m_ultrasonicSensor3.getDistance();
+            m_samples++;
+        }
+        else {
+
+            char buffer[_18_chars];
+            snprintf(buffer, sizeof(buffer), "@ultrasonic:%d;%d;;\r\n", distance_mm1/DISTANCE_SAMPLES, distance_mm2/DISTANCE_SAMPLES);
+            m_serial.write(buffer,strlen(buffer));
+
+            distance_mm1 = 0;
+            distance_mm2 = 0;
+            //distance_mm3 = 0;
+            m_samples = 0;
+        }
 
         /*
         if (distance1 < 5) {

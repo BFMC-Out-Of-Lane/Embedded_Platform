@@ -32,7 +32,7 @@ namespace drivers
         m_pinEcho.rise(riseCallback);
     }
     void CHcsr04::setEchoFallCallbacks(Callback<void()> fallCallback) {
-        m_pinEcho.rise(riseCallback);
+        m_pinEcho.fall(fallCallback);
     }
 
 

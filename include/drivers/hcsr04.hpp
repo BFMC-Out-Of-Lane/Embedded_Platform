@@ -28,8 +28,8 @@ namespace drivers
             uint16_t getDistance();
 
 
-            void setEchoRiseCallbacks(Callback<void()> riseCallback);
-            void setEchoFallCallbacks(Callback<void()> fallCallback);
+            void setEchoRiseCallbacks();
+            void setEchoFallCallbacks();
 
             /* Callbacks for echo pin */
             void onEchoRise();

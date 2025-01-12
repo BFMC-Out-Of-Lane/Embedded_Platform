@@ -36,19 +36,19 @@ namespace periodics
             virtual void        _run();
 
             /* @brief Pin trigger and echo */
-            drivers::CHcsr04 m_ultrasonicSensor1;
-            drivers::CHcsr04 m_ultrasonicSensor2;
-            drivers::CHcsr04 m_ultrasonicSensor3;
+            drivers::CHcsr04& m_ultrasonicSensor1;
+            drivers::CHcsr04& m_ultrasonicSensor2;
+            drivers::CHcsr04& m_ultrasonicSensor3;
 
             uint16_t distance_mm1;
             uint16_t distance_mm2;
             uint16_t distance_mm3;
             uint16_t m_samples;
 
+            drivers::ISpeedingCommand&    m_speedingControl;
+
             /* @brief Serial communication obj.  */
             UnbufferedSerial&          m_serial;
-
-            drivers::ISpeedingCommand&    m_speedingControl;
 
             /** @brief Active flag  */
             bool m_isActive;

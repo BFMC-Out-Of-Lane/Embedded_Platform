@@ -58,16 +58,13 @@ namespace periodics
         //if(!m_isActive) return;
 
         m_ultrasonicSensor1.sendTriggerPulse();
-        //m_ultrasonicSensor2.sendTriggerPulse();
-        //m_ultrasonicSensor3.sendTriggerPulse();
 
-        m_ultrasonicSensor1.setEchoRiseCallbacks(mbed::callback(this, &drivers::CHcsr04::onEchoRise));
-        m_ultrasonicSensor1.setEchoFallCallbacks(mbed::callback(this, &drivers::CHcsr04::onEchoFall));
+        m_ultrasonicSensor1.setEchoRiseCallbacks();
+        m_ultrasonicSensor1.setEchoFallCallbacks();
 
         if (m_samples < DISTANCE_SAMPLES){
             distance_mm1 += m_ultrasonicSensor1.getDistance();
             distance_mm2 += m_ultrasonicSensor2.getDistance();
-            //distance_mm3 += m_ultrasonicSensor3.getDistance();
             m_samples++;
         }
         else {

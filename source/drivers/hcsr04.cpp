@@ -28,11 +28,12 @@ namespace drivers
      */
     CHcsr04::~CHcsr04(){}
 
-    void CHcsr04::setEchoRiseCallbacks(Callback<void()> riseCallback) {
-        m_pinEcho.rise(riseCallback);
+    void CHcsr04::setEchoRiseCallbacks() {
+        m_pinEcho.rise(mbed::callback(this, &CHcsr04::onEchoRise));
     }
+
     void CHcsr04::setEchoFallCallbacks(Callback<void()> fallCallback) {
-        m_pinEcho.fall(fallCallback);
+        m_pinEcho.fall(mbed::callback(this, &CHcsr04::onEchoFall));
     }
 
 

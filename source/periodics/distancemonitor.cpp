@@ -57,10 +57,12 @@ namespace periodics
         //if(!m_isActive) return;
 
         m_ultrasonicSensor1.sendTriggerPulse();
-        //m_ultrasonicSensor1.sendTriggerPulse();
+        m_ultrasonicSensor2.sendTriggerPulse();
 
         m_ultrasonicSensor1.setEchoRiseCallbacks();
         m_ultrasonicSensor1.setEchoFallCallbacks();
+        m_ultrasonicSensor2.setEchoRiseCallbacks();
+        m_ultrasonicSensor2.setEchoFallCallbacks();
 
         distance_mm1 = m_ultrasonicSensor1.calculateAverageDistance();
         distance_mm2 = m_ultrasonicSensor2.calculateAverageDistance();

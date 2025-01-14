@@ -57,27 +57,23 @@ namespace periodics
         /* Run method behaviour */
         //if(!m_isActive) return;
 
-        m_ultrasonicSensor1.sendTriggerPulse();
+        if (f_ultrasonicSensor1.getEchoState() == false) {
+            m_ultrasonicSensor1.sendTriggerPulse();
+        }
+/*
+        if (f_ultrasonicSensor2.getEchoState() == false) {
+            m_ultrasonicSensor2.sendTriggerPulse();
+        }
 
         m_ultrasonicSensor1.setEchoRiseCallbacks();
         m_ultrasonicSensor1.setEchoFallCallbacks();
+*/
+        distance_mm1 += m_ultrasonicSensor1.calculateAverageDistance();
+        distance_mm2 += m_ultrasonicSensor2.calculateAverageDistance();
 
-        if (m_samples < DISTANCE_SAMPLES){
-            distance_mm1 += m_ultrasonicSensor1.getDistance();
-            distance_mm2 += m_ultrasonicSensor2.getDistance();
-            m_samples++;
-        }
-        else {
-
-            char buffer[_18_chars];
-            snprintf(buffer, sizeof(buffer), "@ultrasonic:%d;%d;;\r\n", distance_mm1/DISTANCE_SAMPLES, distance_mm2/DISTANCE_SAMPLES);
-            m_serial.write(buffer,strlen(buffer));
-
-            distance_mm1 = 0;
-            distance_mm2 = 0;
-            //distance_mm3 = 0;
-            m_samples = 0;
-        }
+        char buffer[_18_chars];
+        snprintf(buffer, sizeof(buffer), "@ultrasonic:%d;%d;;\r\n", distance_mm1, distance_mm2);
+        m_serial.wr   ite(buffer,strlen(buffer));
 
         /*
         if (distance1 < 5) {

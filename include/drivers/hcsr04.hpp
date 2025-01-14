@@ -1,5 +1,6 @@
 #ifndef HCSR04_HPP
 #define HCSR04_HPP
+#define DISTANCE_SAMPLES 5
 
 /* The mbed library */
 #include <mbed.h>
@@ -26,7 +27,7 @@ namespace drivers
 
             /* Método público para obtener la distancia */
             uint16_t getDistance();
-
+            bool getEchoState();
 
             void setEchoRiseCallbacks();
             void setEchoFallCallbacks();
@@ -34,7 +35,6 @@ namespace drivers
             /* Callbacks for echo pin */
             void onEchoRise();
             void onEchoFall();
-
 
         private:
             /* private variables & method member */
@@ -44,10 +44,17 @@ namespace drivers
             mbed::InterruptIn m_pinEcho;
 
             mbed::Timer m_timerEcho;/* Timer to measure echo pulse duration */
+            Timeout m_timeout;       // Temporizador para manejar el timeout
 
             volatile uint16_t m_distance;/* Last measured distance */
+            volatile uint32_t m_distanceAverage; // Average distance
+            bool m_echoDetected;     // Bandera para saber si se recibió un pulso de eco
+            uint16_t m_lastDistances[DISTANCE_SAMPLES]; // Array to store the last 5 distances
+            uint8_t m_distanceIndex; // Index to keep track of the current position in the array
 
-
+            void handleTimeout();   // Método para manejar el timeout
+            void updateDistanceArray(uint16_t newDistance); // Método para actualizar el arreglo de distancias
+            uint16_t calculateAverageDistance(); // Método para calcular el promedio de las distancias
 
     }; // class CHcsr04
 }; // namespace drivers

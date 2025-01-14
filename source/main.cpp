@@ -74,7 +74,11 @@ brain::CBatterymanager g_batteryManager(dummy_value);
 drivers::CHcsr04 g_hcsr04_1(D5, D6);
 drivers::CHcsr04 g_hcsr04_2(D7, D8);
 drivers::CHcsr04 g_hcsr04_3(D9, D10);
-periodics::CDistancemonitor g_distancemonitor(g_baseTick * 10, g_hcsr04_1, g_hcsr04_2, g_hcsr04_3, g_speedingDriver, g_rpi);
+
+g_hcsr04_1.setEchoRiseCallbacks();
+g_hcsr04_1.setEchoFallCallbacks();
+
+periodics::CDistancemonitor g_distancemonitor(g_baseTick * 50, g_hcsr04_1, g_hcsr04_2, g_hcsr04_3, g_speedingDriver, g_rpi);
 
 /* USER NEW COMPONENT END */
 

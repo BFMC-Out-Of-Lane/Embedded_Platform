@@ -36,6 +36,8 @@ namespace drivers
             void onEchoRise();
             void onEchoFall();
 
+            uint16_t calculateAverageDistance(); // Método para calcular el promedio de las distancias
+
         private:
             /* private variables & method member */
 
@@ -54,7 +56,7 @@ namespace drivers
 
             void handleTimeout();   // Método para manejar el timeout
             void updateDistanceArray(uint16_t newDistance); // Método para actualizar el arreglo de distancias
-            uint16_t calculateAverageDistance(); // Método para calcular el promedio de las distancias
+
 
     }; // class CHcsr04
 }; // namespace drivers

@@ -25,7 +25,7 @@ namespace drivers
         m_pinEcho.mode(PullDown); // Make sure the echo pin is initially low
         m_timerEcho.stop(); // Make sure the timer is initially stopped
 
-        memset(m_lastDistances, 0, sizeof(m_lastDistances)); // Initialize the array with zeros
+        //memset(m_lastDistances, 0, sizeof(m_lastDistances)); // Initialize the array with zeros
     }
 
     /** @brief  CHcsr04 class destructor
@@ -43,19 +43,14 @@ namespace drivers
 
     // Trigger the pulse for ultrasonic sensor
     void CHcsr04::sendTriggerPulse() {
-        m_echoDetected = false;     // Reiniciar la bandera
-
         m_pinTrg = 1;
         ThisThread::sleep_for(chrono::microseconds(10).count() / 1000); // Convert microseconds to milliseconds
         m_pinTrg = 0;
-
-        // Configurar timeout para el pulso echo
-        m_timeout.attach(callback(this, &CHcsr04::handleTimeout), 0.03f); // 30 ms
     }
 
     // Called when echo pin rises (start of echo)
     void CHcsr04::onEchoRise() {
-        m_echoDetected = true;  // Indicar que el eco fue detectado
+        //m_echoDetected = true;  // Indicar que el eco fue detectado
         m_timerEcho.reset(); // Reset the timer
         m_timerEcho.start(); // Start the timer
     }
@@ -72,10 +67,10 @@ namespace drivers
         updateDistanceArray(m_distance);
 
         // Cancelar el timeout actual porque se recibió el eco correctamente
-        m_timeout.detach();
+        //m_timeout.detach();
 
         // Enviar un nuevo pulso trigger
-        sendTriggerPulse();
+        //sendTriggerPulse();
     }
 
     uint16_t CHcsr04::getDistance() {
@@ -99,17 +94,19 @@ namespace drivers
     }
 
     uint16_t CHcsr04::calculateAverageDistance() {
-    for (uint8_t i = 0; i < DISTANCE_SAMPLES; ++i) {
-        if (m_lastDistances[i] == 0) {
-            return 0; // Return 0 if any value in the array is 0
+        for (uint8_t i = 0; i < DISTANCE_SAMPLES; ++i) {
+            if (m_lastDistances[i] == 0) {
+                return 0; // Return 0 if any value in the array is 0
+            }
         }
-    }
 
-    uint32_t sum = 0;
-    for (uint8_t i = 0; i < DISTANCE_SAMPLES; ++i) {
-        sum += m_lastDistances[i];
+        uint32_t sum = 0;
+        for (uint8_t i = 0; i < DISTANCE_SAMPLES; ++i) {
+            //printf("Distance %d: %d\n", i, m_lastDistances[i]);
+            sum += m_lastDistances[i];
+            //printf("Sum: %d\n", sum);
+        }
+        m_distanceAverage = sum / DISTANCE_SAMPLES;
+        return m_distanceAverage;
     }
-    m_distanceAverage = sum / DISTANCE_SAMPLES;
-    return m_distanceAverage;
-}
 }; // namespace drivers

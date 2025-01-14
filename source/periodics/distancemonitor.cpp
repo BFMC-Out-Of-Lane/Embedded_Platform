@@ -1,7 +1,6 @@
 #include "periodics/distancemonitor.hpp"
 
 #define _18_chars 256
-#define DISTANCE_SAMPLES 10
 
 namespace periodics
 {
@@ -57,23 +56,18 @@ namespace periodics
         /* Run method behaviour */
         //if(!m_isActive) return;
 
-        if (f_ultrasonicSensor1.getEchoState() == false) {
-            m_ultrasonicSensor1.sendTriggerPulse();
-        }
-/*
-        if (f_ultrasonicSensor2.getEchoState() == false) {
-            m_ultrasonicSensor2.sendTriggerPulse();
-        }
+        m_ultrasonicSensor1.sendTriggerPulse();
+        //m_ultrasonicSensor1.sendTriggerPulse();
 
         m_ultrasonicSensor1.setEchoRiseCallbacks();
         m_ultrasonicSensor1.setEchoFallCallbacks();
-*/
-        distance_mm1 += m_ultrasonicSensor1.calculateAverageDistance();
-        distance_mm2 += m_ultrasonicSensor2.calculateAverageDistance();
+
+        distance_mm1 = m_ultrasonicSensor1.calculateAverageDistance();
+        distance_mm2 = m_ultrasonicSensor2.calculateAverageDistance();
 
         char buffer[_18_chars];
-        snprintf(buffer, sizeof(buffer), "@ultrasonic:%d;%d;;\r\n", distance_mm1, distance_mm2);
-        m_serial.wr   ite(buffer,strlen(buffer));
+        snprintf(buffer, sizeof(buffer), "@ultrasonic:%d;%d;;\r\n", distance_mm1*10, distance_mm2*10);
+        m_serial.write(buffer,strlen(buffer));
 
         /*
         if (distance1 < 5) {

@@ -5,6 +5,7 @@
 #include <utils/task.hpp>
 #include <drivers/hcsr04.hpp>
 #include <drivers/speedingmotor.hpp>
+#include <brain/globalsv.hpp>
 
 namespace periodics
 {
@@ -45,6 +46,8 @@ namespace periodics
             uint16_t distance_mm3;
             uint16_t m_samples;
 
+            std::chrono::time_point<std::chrono::steady_clock> m_brakeEndTime;
+
             drivers::ISpeedingCommand&    m_speedingControl;
 
             /* @brief Serial communication obj.  */
@@ -52,6 +55,7 @@ namespace periodics
 
             /** @brief Active flag  */
             bool m_isActive;
+            bool m_isBraking;
 
     }; // class CDistancemonitor
 }; // namespace periodics

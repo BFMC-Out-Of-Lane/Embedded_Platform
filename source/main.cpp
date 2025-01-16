@@ -45,13 +45,13 @@ periodics::CBlinker g_blinker(g_baseTick * 500, LED1);
 periodics::CAlerts g_alerts(g_baseTick * 5000);
 
 // // It's a task for sending periodically the instant current consumption of the battery
-periodics::CInstantConsumption g_instantconsumption(g_baseTick * 1000, A2, g_rpi);
+periodics::CInstantConsumption g_instantconsumption(g_baseTick * 3000, A2, g_rpi);
 
 // // It's a task for sending periodically the battery voltage, so to notice when discharging
 periodics::CTotalVoltage g_totalvoltage(g_baseTick*3000, A4, g_rpi);
 
 // It's a task for sending periodically the IMU values
-periodics::CImu g_imu(g_baseTick*150, g_rpi, I2C_SDA, I2C_SCL);
+periodics::CImu g_imu(g_baseTick*1000, g_rpi, I2C_SDA, I2C_SCL);
 
 //PIN for a motor speed in ms, inferior and superior limit
 drivers::CSpeedingMotor g_speedingDriver(D3, -500, 500); //speed in cm/s
@@ -64,10 +64,6 @@ brain::CRobotStateMachine g_robotstatemachine(g_baseTick * 50, g_rpi, g_steering
 
 periodics::CResourcemonitor g_resourceMonitor(g_baseTick * 5000, g_rpi);
 
-brain::CKlmanager g_klmanager(g_alerts, g_imu, g_instantconsumption, g_totalvoltage, g_robotstatemachine, g_resourceMonitor);
-
-periodics::CPowermanager g_powermanager(g_baseTick * 100, g_klmanager, g_rpi, g_totalvoltage, g_instantconsumption, g_alerts);
-
 brain::CBatterymanager g_batteryManager(dummy_value);
 
 /* USER NEW COMPONENT BEGIN */
@@ -75,9 +71,13 @@ drivers::CHcsr04 g_hcsr04_1(D5, D6);
 drivers::CHcsr04 g_hcsr04_2(D7, D8);
 drivers::CHcsr04 g_hcsr04_3(D9, D10);
 
-periodics::CDistancemonitor g_distancemonitor(g_baseTick * 24, g_hcsr04_1, g_hcsr04_2, g_hcsr04_3, g_speedingDriver, g_rpi);
+periodics::CDistancemonitor g_distancemonitor(g_baseTick * 25, g_hcsr04_1, g_hcsr04_2, g_hcsr04_3, g_speedingDriver, g_rpi);
 
 /* USER NEW COMPONENT END */
+
+brain::CKlmanager g_klmanager(g_alerts, g_imu, g_instantconsumption, g_totalvoltage, g_robotstatemachine, g_resourceMonitor, g_distancemonitor);
+
+periodics::CPowermanager g_powermanager(g_baseTick * 100, g_klmanager, g_rpi, g_totalvoltage, g_instantconsumption, g_alerts);
 
 // Map for redirecting messages with the key and the callback functions. If the message key equals to one of the enumerated keys, than it will be applied the paired callback function.
 drivers::CSerialMonitor::CSerialSubscriberMap g_serialMonitorSubscribers = {

@@ -51,5 +51,6 @@ bool bool_globalsV_imu_isActive     = false;
 bool bool_globalsV_instant_isActive = false;
 bool bool_globalsV_battery_isActive = false;
 bool bool_globalsV_resource_isActive= false;
+bool bool_globalsV_distanceMon_isActive= false;
 bool bool_globalsV_ShuttedDown = false;
 bool bool_globalsV_warningFlag = false;

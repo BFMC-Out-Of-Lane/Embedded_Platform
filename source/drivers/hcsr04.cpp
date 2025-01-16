@@ -62,15 +62,9 @@ namespace drivers
 
         // Calculate the distance using the formula: Distance = (time * speed_of_sound) / 2
         // Speed of sound ≈ 0.034 cm/μs
-        m_distance = echoDuration * 0.034 / 2;
+        m_distance = (echoDuration * 0.034 / 2) *10 ; // Convert cm to mm
 
         updateDistanceArray(m_distance);
-
-        // Cancelar el timeout actual porque se recibió el eco correctamente
-        //m_timeout.detach();
-
-        // Enviar un nuevo pulso trigger
-        //sendTriggerPulse();
     }
 
     uint16_t CHcsr04::getDistance() {
@@ -102,10 +96,12 @@ namespace drivers
 
         uint32_t sum = 0;
         for (uint8_t i = 0; i < DISTANCE_SAMPLES; ++i) {
-            //printf("Distance %d: %d\n", i, m_lastDistances[i]);
+//            printf("Distance %d: %d\n", i, m_lastDistances[i]);
             sum += m_lastDistances[i];
-            //printf("Sum: %d\n", sum);
+//            printf("Sum: %d\n", sum);
         }
+//        printf("%d, %d, %d, %d, %d\n", m_lastDistances[0], m_lastDistances[1], m_lastDistances[2], m_lastDistances[3], m_lastDistances[4]);
+
         m_distanceAverage = sum / DISTANCE_SAMPLES;
         return m_distanceAverage;
     }

@@ -62,9 +62,9 @@ namespace drivers
 
         // Calculate the distance using the formula: Distance = (time * speed_of_sound) / 2
         // Speed of sound ≈ 0.034 cm/μs
-        m_distance = (echoDuration * 0.034 / 2) *10 ; // Convert cm to mm
-
-        updateDistanceArray(m_distance);
+//        m_distance = (echoDuration * 0.034 / 2) *10 ; // Convert cm to mm
+        m_distance = (echoDuration * 0.17);
+//        updateDistanceArray(m_distance);
     }
 
     uint16_t CHcsr04::getDistance() {

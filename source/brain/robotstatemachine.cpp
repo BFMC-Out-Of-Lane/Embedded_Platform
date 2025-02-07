@@ -47,18 +47,21 @@ namespace brain{
             std::chrono::milliseconds                      f_period,
             UnbufferedSerial&             f_serialPort,
             drivers::ISteeringCommand&    f_steeringControl,
-            drivers::ISpeedingCommand&    f_speedingControl
+            drivers::ISpeedingCommand&    f_speedingControl,
+            drivers::ILightsCommand&    f_brightnessControl
         ) 
         : utils::CTask(f_period)
         , m_serialPort(f_serialPort)
         , m_steeringControl(f_steeringControl)
         , m_speedingControl(f_speedingControl)
+        , m_brightnessControl(f_brightnessControl)
         , m_state(0)
         , m_ticksRun(0)
         , m_targetTime(0)
         , m_period((uint16_t)(f_period.count()))
         , m_speed(0)
         , m_steering(0)
+        , m_brightness(0)
     {
     }
 
@@ -120,6 +123,13 @@ namespace brain{
                     // Otherwise, increment the tick counter.
                     m_ticksRun += m_period;
                 }
+                break;
+
+            case 5:
+//                m_brightnessControl.setBrightness(m_brightness); // control the lights' brightness
+                snprintf(buffer, sizeof(buffer), "@brightness:%d;;\r\n", m_brightness);
+                m_serialPort.write(buffer, strlen(buffer));
+                m_state = 0;
                 break;
         }
     }
@@ -264,6 +274,33 @@ namespace brain{
         else
         {
             sprintf(response, "something went wrong");
+        }
+    }
+
+    void CRobotStateMachine::serialCallbackLIGHTScommand(char const * a, char * b)
+    {
+        int l_brightness;
+        uint32_t l_res = sscanf(a,"%d",&l_brightness);
+        if (1 == l_res)
+        {
+            if(uint8_globalsV_value_of_kl == 30)
+            {
+                if(!m_brightnessControl.inRange(l_brightness)){ // Check the received reference speed is within range
+                    sprintf(b,"The reference speed command is too high");
+                    return;
+                }
+
+                m_state = 5;
+
+                m_brightness = l_brightness;
+            }
+            else{
+                sprintf(b,"kl 30 is required!!");
+            }
+        }
+        else
+        {
+            sprintf(b,"syntax error");
         }
     }
 

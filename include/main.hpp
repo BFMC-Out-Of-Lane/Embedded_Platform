@@ -64,3 +64,5 @@
 #include <drivers/hcsr04.hpp>
 /* Header file for the Distancemonitor functionality */
 #include <periodics/distancemonitor.hpp>
+/* Header file for the Lights functionality */
+#include <drivers/lights.hpp>

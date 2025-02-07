@@ -37,6 +37,9 @@
 #include <drivers/speedingmotor.hpp>
 /* Header file for the burshless motor  */
 #include <drivers/steeringmotor.hpp>
+
+#include <drivers/lights.hpp>
+
 /* Header file for the task manager library, which  applies periodically the fun function of it's children*/
 #include <utils/taskmanager.hpp>
 
@@ -60,7 +63,8 @@ namespace brain
                 std::chrono::milliseconds                      f_period, 
                 UnbufferedSerial&             f_serialPort, 
                 drivers::ISteeringCommand&    f_steeringControl,
-                drivers::ISpeedingCommand&    f_speedingControl
+                drivers::ISpeedingCommand&    f_speedingControl,
+                drivers::ILightsCommand&    f_brightnessControl
             );
             /* Destructor */
             ~CRobotStateMachine();
@@ -73,6 +77,8 @@ namespace brain
             /* Serial callback method for vcd */
             void serialCallbackVCDcommand(char const * message, char * response);
 
+            void serialCallbackLIGHTScommand(char const * a, char * b);
+
         private:
             /* Contains the state machine, which control the lower level drivers (motor and steering) based the current state. */
             virtual void _run();
@@ -82,6 +88,9 @@ namespace brain
             drivers::ISteeringCommand&    m_steeringControl;
             /* Steering wheel control interface */
             drivers::ISpeedingCommand&    m_speedingControl;
+
+            drivers::ILightsCommand&    m_brightnessControl;
+
             /* State machine state */
             uint8_t                       m_state;
 
@@ -93,6 +102,7 @@ namespace brain
 
             int m_speed;
             int m_steering;
+            int m_brightness;
         
     }; // class CRobotStateMachine
 }; // namespace brain

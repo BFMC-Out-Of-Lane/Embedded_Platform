@@ -59,7 +59,7 @@ drivers::CSpeedingMotor g_speedingDriver(D3, -500, 500); //speed in cm/s
 //PIN for angle in servo degrees, inferior and superior limit
 drivers::CSteeringMotor g_steeringDriver(D4, -250, 250);
 
-drivers::CLights g_lightsDriver(D12, 0, 1000);
+drivers::CLights g_lightsDriver(D12, 0, 100);
 
 // Create the motion controller, which controls the robot states and the robot moves based on the transmitted command over the serial interface.
 brain::CRobotStateMachine g_robotstatemachine(g_baseTick * 50, g_rpi, g_steeringDriver, g_speedingDriver, g_lightsDriver);
@@ -87,7 +87,7 @@ drivers::CSerialMonitor::CSerialSubscriberMap g_serialMonitorSubscribers = {
     {"steer",          mbed::callback(&g_robotstatemachine, &brain::CRobotStateMachine::serialCallbackSTEERcommand)},
     {"brake",          mbed::callback(&g_robotstatemachine, &brain::CRobotStateMachine::serialCallbackBRAKEcommand)},
     {"vcd",            mbed::callback(&g_robotstatemachine, &brain::CRobotStateMachine::serialCallbackVCDcommand)},
-    {"lights",         mbed::callback(&g_robotstatemachine, &brain::CRobotStateMachine::serialCallbackLIGHTScommand)},
+    {"brightness",     mbed::callback(&g_robotstatemachine, &brain::CRobotStateMachine::serialCallbackLIGHTScommand)},
     {"battery",        mbed::callback(&g_totalvoltage,      &periodics::CTotalVoltage::serialCallbackTOTALVcommand)},
     {"instant",        mbed::callback(&g_instantconsumption,&periodics::CInstantConsumption::serialCallbackINSTANTcommand)},
     {"imu",            mbed::callback(&g_imu,               &periodics::CImu::serialCallbackIMUcommand)},

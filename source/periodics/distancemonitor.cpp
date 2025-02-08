@@ -85,7 +85,8 @@ namespace periodics
 //            char buffer[_18_chars];
 //            snprintf(buffer, sizeof(buffer), "@ultrasonic:%d;%d;;\r\n", distance_mm1*10, distance_mm2*10);
 //            m_serial.write(buffer,strlen(buffer));
-            printf("@ultrasonic:%d;%d;;\r\n", distance_mm1, distance_mm2);
+
+//            printf("@ultrasonic:%d;%d;;\r\n", distance_mm1, distance_mm2);
         }
 
 //		if (distance_mm1 < 200 ) {

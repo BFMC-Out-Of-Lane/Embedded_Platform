@@ -286,8 +286,8 @@ namespace brain{
             if(uint8_globalsV_value_of_kl == 30)
             {
                 if(!m_brightnessControl.inRange(l_brightness)){ // Check the received reference speed is within range
-                    sprintf(b,"The reference speed command is too high");
-                    return;
+                    sprintf(b,"The reference brightness command is too high");
+//                    return;
                 }
 
                 m_state = 5;

@@ -40,7 +40,14 @@ namespace drivers
             f_brightness = m_sup_limit;
         }
         // Set the brightness
-        m_pwm_pin.pulsewidth_us(f_brightness);
+//        m_pwm_pin.pulsewidth_us(f_brightness);
+        // m_pwm_pin.write((float)f_brightness/100);
+        printf("brightness in setBrightness: %d\n", f_brightness);
+        m_pwm_pin.pulsewidth_us(conversion(f_brightness));
+    }
+
+    int CLights::conversion(int f_brightness) {
+        return ((step_value * f_brightness) / 100) + zero_default;
     }
 
     bool CLights::inRange(int f_brightness){

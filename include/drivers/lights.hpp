@@ -40,16 +40,15 @@ namespace drivers
         private:
             /** @brief PWM output pin */
             PwmOut m_pwm_pin;
-            /** @brief 0 default */
-            uint16_t zero_default = 0; //0.074568(7.4% duty cycle) * 20000µs(ms_period)
-            /** @brief 0 default */
-            uint16_t ms_period = 1000; // 20000µs
-            /** @brief step_value */
-            int16_t step_value = 102;  // 0.00051 * 20000µs(ms_period) * 10(scale factor)
+            uint16_t zero_default = 0;
+            uint16_t ms_period = 20; // 20000µs
+            int16_t step_value = 1000;  // 0.00051 * 20000µs(ms_period) * 10(scale factor)
             /** @brief Inferior limit */
             const int m_inf_limit;
             /** @brief Superior limit */
             const int m_sup_limit;
+
+            int conversion(int f_brightness);
 
     }; // class CLights
 }; // namespace drivers

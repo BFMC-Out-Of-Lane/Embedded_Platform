@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/CMakeFiles/greentea-client-populate"
+		},
+		{
+			"file" : "D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/CMakeFiles/770b21ba2c4d8a65d252194b2bcbcafb/greentea-client-populate.rule"
+		},
+		{
+			"file" : "D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/CMakeFiles/f252526d725746a4b7b9236f9e389b45/greentea-client-populate-complete.rule"
+		},
+		{
+			"file" : "D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/CMakeFiles/6967f1ce72d39c46783a65dedf85339c/greentea-client-populate-build.rule"
+		},
+		{
+			"file" : "D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/CMakeFiles/6967f1ce72d39c46783a65dedf85339c/greentea-client-populate-configure.rule"
+		},
+		{
+			"file" : "D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/CMakeFiles/6967f1ce72d39c46783a65dedf85339c/greentea-client-populate-download.rule"
+		},
+		{
+			"file" : "D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/CMakeFiles/6967f1ce72d39c46783a65dedf85339c/greentea-client-populate-install.rule"
+		},
+		{
+			"file" : "D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/CMakeFiles/6967f1ce72d39c46783a65dedf85339c/greentea-client-populate-mkdir.rule"
+		},
+		{
+			"file" : "D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/CMakeFiles/6967f1ce72d39c46783a65dedf85339c/greentea-client-populate-patch.rule"
+		},
+		{
+			"file" : "D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/CMakeFiles/6967f1ce72d39c46783a65dedf85339c/greentea-client-populate-test.rule"
+		},
+		{
+			"file" : "D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/CMakeFiles/6967f1ce72d39c46783a65dedf85339c/greentea-client-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"greentea-client-populate"
+		],
+		"name" : "greentea-client-populate"
+	}
+}

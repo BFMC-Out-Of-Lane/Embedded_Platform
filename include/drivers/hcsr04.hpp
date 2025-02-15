@@ -49,6 +49,7 @@ namespace drivers
             Timeout m_timeout;       // Temporizador para manejar el timeout
 
             volatile uint16_t m_distance;/* Last measured distance */
+            volatile uint16_t m_distance_aux;/* Last measured distance AUX */
             volatile uint32_t m_distanceAverage; // Average distance
             bool m_echoDetected;     // Bandera para saber si se recibió un pulso de eco
             uint16_t m_lastDistances[DISTANCE_SAMPLES]; // Array to store the last 5 distances

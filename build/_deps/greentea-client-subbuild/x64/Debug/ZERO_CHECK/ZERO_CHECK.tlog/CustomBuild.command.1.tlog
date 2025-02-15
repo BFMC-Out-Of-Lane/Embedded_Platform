@@ -1,0 +1,10 @@
+^D:\USERS\ALEKP\DESKTOP\AUTO_LOCO\STM32_NUCLEO\EMBEDDED_PLATFORM\BUILD\_DEPS\GREENTEA-CLIENT-SUBBUILD\CMAKEFILES\770B21BA2C4D8A65D252194B2BCBCAFB\GENERATE.STAMP.RULE
+setlocal
+"D:\Program Files\CMake\bin\cmake.exe" -SD:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild -BD:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/greentea-client-populate.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

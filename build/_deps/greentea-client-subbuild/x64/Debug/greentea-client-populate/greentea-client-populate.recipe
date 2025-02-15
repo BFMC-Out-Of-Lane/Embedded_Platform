@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>D:\Users\alekp\Desktop\Auto_loco\STM32_Nucleo\Embedded_Platform\build\_deps\greentea-client-subbuild\x64\Debug\ZERO_CHECK</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>D:\Users\alekp\Desktop\Auto_loco\STM32_Nucleo\Embedded_Platform\build\_deps\greentea-client-subbuild\x64\Debug\greentea-client-populate</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles />
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>

@@ -1,6 +1,8 @@
 #include "drivers/hcsr04.hpp"
 #define _18_chars 256
 #define DISTANCE_SAMPLES 5
+#define MAX_SENSOR_DISTANCEC_MM 4000
+#define MIN_SENSOR_DISTANCEC_MM 50
 
 namespace drivers
 {
@@ -53,17 +55,37 @@ namespace drivers
         //m_echoDetected = true;  // Indicar que el eco fue detectado
         m_timerEcho.reset(); // Reset the timer
         m_timerEcho.start(); // Start the timer
+
+        /* 
+        uint32_t echoDurationPRINT = m_timerEcho.elapsed_time().count();
+
+        // Usar printf correctamente con %lld para long long
+        printf("Elapsed time on echo FALL: %lld microseconds\r\n", echoDurationPRINT);
+*/
     }
 
     // Called when echo pin falls (end of echo)
     void CHcsr04::onEchoFall() {
+        /* 
+        uint32_t echoDurationPRINT = m_timerEcho.elapsed_time().count();
+
+        // Usar printf correctamente con %lld para long long
+        printf("Elapsed time on echo FALL: %lld microseconds\r\n", echoDurationPRINT);
+*/
+
         m_timerEcho.stop(); // Stop the timer
         uint32_t echoDuration = m_timerEcho.elapsed_time().count();// Measure the time when the echo pulse falls
 
         // Calculate the distance using the formula: Distance = (time * speed_of_sound) / 2
         // Speed of sound ≈ 0.034 cm/μs
 //        m_distance = (echoDuration * 0.034 / 2) *10 ; // Convert cm to mm
-        m_distance = (echoDuration * 0.17);
+        m_distance_aux = (echoDuration * 0.17);
+
+        if (m_distance_aux > MIN_SENSOR_DISTANCEC_MM && m_distance_aux < MAX_SENSOR_DISTANCEC_MM) 
+            m_distance = m_distance_aux;
+        if (m_distance_aux > MAX_SENSOR_DISTANCEC_MM)
+            m_distance = 4000;
+        
 //        updateDistanceArray(m_distance);
     }
 

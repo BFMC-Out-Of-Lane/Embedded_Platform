@@ -61,7 +61,7 @@ namespace periodics
     void CDistancemonitor::_run()
     {
         /* Run method behaviour */
-        if(!m_isActive) return;
+        //if(!m_isActive) return;
 
         m_ultrasonicSensor1.sendTriggerPulse();
         m_ultrasonicSensor2.sendTriggerPulse();

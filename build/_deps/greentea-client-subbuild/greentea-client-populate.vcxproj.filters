@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\Users\alekp\Desktop\Auto_loco\STM32_Nucleo\Embedded_Platform\build\_deps\greentea-client-subbuild\CMakeFiles\6967f1ce72d39c46783a65dedf85339c\greentea-client-populate-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Users\alekp\Desktop\Auto_loco\STM32_Nucleo\Embedded_Platform\build\_deps\greentea-client-subbuild\CMakeFiles\6967f1ce72d39c46783a65dedf85339c\greentea-client-populate-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Users\alekp\Desktop\Auto_loco\STM32_Nucleo\Embedded_Platform\build\_deps\greentea-client-subbuild\CMakeFiles\6967f1ce72d39c46783a65dedf85339c\greentea-client-populate-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Users\alekp\Desktop\Auto_loco\STM32_Nucleo\Embedded_Platform\build\_deps\greentea-client-subbuild\CMakeFiles\6967f1ce72d39c46783a65dedf85339c\greentea-client-populate-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Users\alekp\Desktop\Auto_loco\STM32_Nucleo\Embedded_Platform\build\_deps\greentea-client-subbuild\CMakeFiles\6967f1ce72d39c46783a65dedf85339c\greentea-client-populate-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Users\alekp\Desktop\Auto_loco\STM32_Nucleo\Embedded_Platform\build\_deps\greentea-client-subbuild\CMakeFiles\6967f1ce72d39c46783a65dedf85339c\greentea-client-populate-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Users\alekp\Desktop\Auto_loco\STM32_Nucleo\Embedded_Platform\build\_deps\greentea-client-subbuild\CMakeFiles\6967f1ce72d39c46783a65dedf85339c\greentea-client-populate-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Users\alekp\Desktop\Auto_loco\STM32_Nucleo\Embedded_Platform\build\_deps\greentea-client-subbuild\CMakeFiles\6967f1ce72d39c46783a65dedf85339c\greentea-client-populate-test.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Users\alekp\Desktop\Auto_loco\STM32_Nucleo\Embedded_Platform\build\_deps\greentea-client-subbuild\CMakeFiles\f252526d725746a4b7b9236f9e389b45\greentea-client-populate-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Users\alekp\Desktop\Auto_loco\STM32_Nucleo\Embedded_Platform\build\_deps\greentea-client-subbuild\CMakeFiles\770b21ba2c4d8a65d252194b2bcbcafb\greentea-client-populate.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Users\alekp\Desktop\Auto_loco\STM32_Nucleo\Embedded_Platform\build\_deps\greentea-client-subbuild\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\Users\alekp\Desktop\Auto_loco\STM32_Nucleo\Embedded_Platform\build\_deps\greentea-client-subbuild\CMakeFiles\greentea-client-populate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{4B435163-7AA4-3A9C-95AA-6943B1EE9E06}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,3 @@
+D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/CMakeFiles/greentea-client-populate.dir
+D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/CMakeFiles/ALL_BUILD.dir
+D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/CMakeFiles/ZERO_CHECK.dir

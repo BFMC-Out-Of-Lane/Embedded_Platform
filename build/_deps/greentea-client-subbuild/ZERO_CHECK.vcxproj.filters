@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\Users\alekp\Desktop\Auto_loco\STM32_Nucleo\Embedded_Platform\build\_deps\greentea-client-subbuild\CMakeFiles\770b21ba2c4d8a65d252194b2bcbcafb\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{4B435163-7AA4-3A9C-95AA-6943B1EE9E06}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

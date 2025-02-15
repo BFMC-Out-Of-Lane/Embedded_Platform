@@ -1,0 +1,150 @@
+^D:\USERS\ALEKP\DESKTOP\AUTO_LOCO\STM32_NUCLEO\EMBEDDED_PLATFORM\BUILD\_DEPS\GREENTEA-CLIENT-SUBBUILD\CMAKEFILES\6967F1CE72D39C46783A65DEDF85339C\GREENTEA-CLIENT-POPULATE-MKDIR.RULE
+setlocal
+"D:\Program Files\CMake\bin\cmake.exe" -Dcfgdir=/Debug -P D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/greentea-client-populate-prefix/tmp/greentea-client-populate-mkdirs.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"D:\Program Files\CMake\bin\cmake.exe" -E touch D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/greentea-client-populate-prefix/src/greentea-client-populate-stamp/Debug/greentea-client-populate-mkdir
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\USERS\ALEKP\DESKTOP\AUTO_LOCO\STM32_NUCLEO\EMBEDDED_PLATFORM\BUILD\_DEPS\GREENTEA-CLIENT-SUBBUILD\CMAKEFILES\6967F1CE72D39C46783A65DEDF85339C\GREENTEA-CLIENT-POPULATE-DOWNLOAD.RULE
+setlocal
+cd D:\Users\alekp\Desktop\Auto_loco\STM32_Nucleo\Embedded_Platform\build\_deps
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"D:\Program Files\CMake\bin\cmake.exe" -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/greentea-client-populate-prefix/tmp/greentea-client-populate-gitclone.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"D:\Program Files\CMake\bin\cmake.exe" -E touch D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/greentea-client-populate-prefix/src/greentea-client-populate-stamp/Debug/greentea-client-populate-download
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\USERS\ALEKP\DESKTOP\AUTO_LOCO\STM32_NUCLEO\EMBEDDED_PLATFORM\BUILD\_DEPS\GREENTEA-CLIENT-SUBBUILD\CMAKEFILES\6967F1CE72D39C46783A65DEDF85339C\GREENTEA-CLIENT-POPULATE-UPDATE.RULE
+setlocal
+cd D:\Users\alekp\Desktop\Auto_loco\STM32_Nucleo\Embedded_Platform\build\_deps\greentea-client-src
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"D:\Program Files\CMake\bin\cmake.exe" -Dcan_fetch=YES -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/greentea-client-populate-prefix/tmp/greentea-client-populate-gitupdate.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\USERS\ALEKP\DESKTOP\AUTO_LOCO\STM32_NUCLEO\EMBEDDED_PLATFORM\BUILD\_DEPS\GREENTEA-CLIENT-SUBBUILD\CMAKEFILES\6967F1CE72D39C46783A65DEDF85339C\GREENTEA-CLIENT-POPULATE-PATCH.RULE
+setlocal
+"D:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"D:\Program Files\CMake\bin\cmake.exe" -E touch D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/greentea-client-populate-prefix/src/greentea-client-populate-stamp/Debug/greentea-client-populate-patch
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\USERS\ALEKP\DESKTOP\AUTO_LOCO\STM32_NUCLEO\EMBEDDED_PLATFORM\BUILD\_DEPS\GREENTEA-CLIENT-SUBBUILD\CMAKEFILES\6967F1CE72D39C46783A65DEDF85339C\GREENTEA-CLIENT-POPULATE-CONFIGURE.RULE
+setlocal
+cd D:\Users\alekp\Desktop\Auto_loco\STM32_Nucleo\Embedded_Platform\build\_deps\greentea-client-build
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"D:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"D:\Program Files\CMake\bin\cmake.exe" -E touch D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/greentea-client-populate-prefix/src/greentea-client-populate-stamp/Debug/greentea-client-populate-configure
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\USERS\ALEKP\DESKTOP\AUTO_LOCO\STM32_NUCLEO\EMBEDDED_PLATFORM\BUILD\_DEPS\GREENTEA-CLIENT-SUBBUILD\CMAKEFILES\6967F1CE72D39C46783A65DEDF85339C\GREENTEA-CLIENT-POPULATE-BUILD.RULE
+setlocal
+cd D:\Users\alekp\Desktop\Auto_loco\STM32_Nucleo\Embedded_Platform\build\_deps\greentea-client-build
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"D:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"D:\Program Files\CMake\bin\cmake.exe" -E touch D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/greentea-client-populate-prefix/src/greentea-client-populate-stamp/Debug/greentea-client-populate-build
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\USERS\ALEKP\DESKTOP\AUTO_LOCO\STM32_NUCLEO\EMBEDDED_PLATFORM\BUILD\_DEPS\GREENTEA-CLIENT-SUBBUILD\CMAKEFILES\6967F1CE72D39C46783A65DEDF85339C\GREENTEA-CLIENT-POPULATE-INSTALL.RULE
+setlocal
+cd D:\Users\alekp\Desktop\Auto_loco\STM32_Nucleo\Embedded_Platform\build\_deps\greentea-client-build
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"D:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"D:\Program Files\CMake\bin\cmake.exe" -E touch D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/greentea-client-populate-prefix/src/greentea-client-populate-stamp/Debug/greentea-client-populate-install
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\USERS\ALEKP\DESKTOP\AUTO_LOCO\STM32_NUCLEO\EMBEDDED_PLATFORM\BUILD\_DEPS\GREENTEA-CLIENT-SUBBUILD\CMAKEFILES\6967F1CE72D39C46783A65DEDF85339C\GREENTEA-CLIENT-POPULATE-TEST.RULE
+setlocal
+cd D:\Users\alekp\Desktop\Auto_loco\STM32_Nucleo\Embedded_Platform\build\_deps\greentea-client-build
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"D:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"D:\Program Files\CMake\bin\cmake.exe" -E touch D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/greentea-client-populate-prefix/src/greentea-client-populate-stamp/Debug/greentea-client-populate-test
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\USERS\ALEKP\DESKTOP\AUTO_LOCO\STM32_NUCLEO\EMBEDDED_PLATFORM\BUILD\_DEPS\GREENTEA-CLIENT-SUBBUILD\CMAKEFILES\F252526D725746A4B7B9236F9E389B45\GREENTEA-CLIENT-POPULATE-COMPLETE.RULE
+setlocal
+"D:\Program Files\CMake\bin\cmake.exe" -E make_directory D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/CMakeFiles/Debug
+if %errorlevel% neq 0 goto :cmEnd
+"D:\Program Files\CMake\bin\cmake.exe" -E touch D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/CMakeFiles/Debug/greentea-client-populate-complete
+if %errorlevel% neq 0 goto :cmEnd
+"D:\Program Files\CMake\bin\cmake.exe" -E touch D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/greentea-client-populate-prefix/src/greentea-client-populate-stamp/Debug/greentea-client-populate-done
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\USERS\ALEKP\DESKTOP\AUTO_LOCO\STM32_NUCLEO\EMBEDDED_PLATFORM\BUILD\_DEPS\GREENTEA-CLIENT-SUBBUILD\CMAKEFILES\770B21BA2C4D8A65D252194B2BCBCAFB\GREENTEA-CLIENT-POPULATE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\USERS\ALEKP\DESKTOP\AUTO_LOCO\STM32_NUCLEO\EMBEDDED_PLATFORM\BUILD\_DEPS\GREENTEA-CLIENT-SUBBUILD\CMAKELISTS.TXT
+setlocal
+"D:\Program Files\CMake\bin\cmake.exe" -SD:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild -BD:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild --check-stamp-file D:/Users/alekp/Desktop/Auto_loco/STM32_Nucleo/Embedded_Platform/build/_deps/greentea-client-subbuild/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

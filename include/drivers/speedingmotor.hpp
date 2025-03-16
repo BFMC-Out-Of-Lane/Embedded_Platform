@@ -103,11 +103,10 @@ namespace drivers
                 -300, -350, -400, -450, -500
             };
 
-            // StepValues have a scale factor applied (*10)
             const int stepValues[25] = {
                 214, 176, 152, 134, 120, 110, 102, 94, 86, 82,
-                78, 74, 70, 68, 66, 64, 60, 58, 56, 50,
-                48, 42, 38, 36, 34
+                78, 74, 70, 68, 66, 64, 63, 62, 61, 60,
+                55, 50, 48, 42, 38
             };
 
             int conversion(int f_speed); //angle to duty cycle

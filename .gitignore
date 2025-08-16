@@ -3,3 +3,30 @@ cmake_build/*
 !cmake_build/NUCLEO_F401RE/develop/GCC_ARM/robot_car.bin
 mbed-os/
 .vscode
+
+# CubeIDE generated build artifacts
+/Debug/
+/Release/
+/build/
+/out/
+
+# Eclipse project metadata (can be regenerated)
+.cproject
+.project
+.settings/
+
+# CubeIDE auto-generated .launch configs
+*.launch
+
+# IDE-specific indexes and logs
+.metadata/
+*.log
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Backup/swap files
+*~
+*.swp
+*.bak
